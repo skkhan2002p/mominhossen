@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maya Code — Chat & Community</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://getmaya.cloud/_maya/db.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <h1>Maya Code</h1>
+          <span class="status-indicator"><span class="dot"></span> <span id="onlineCount">Live Sync</span></span>
+        </div>
+      </div>
+      <div class="header-right">
+        <button id="userProfileBtn" class="icon-btn" title="Change Username" aria-label="Change Username">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation / Channels Bar -->
+    <nav class="channels-bar">
+      <button class="channel-tab active" data-channel="general"># general</button>
+      <button class="channel-tab" data-channel="code-help"># code-help</button>
+      <button class="channel-tab" data-channel="showcase"># showcase</button>
+    </nav>
+
+    <!-- Main Chat Container -->
+    <main class="chat-main" id="chatMain">
+      <div id="offlineNotice" class="offline-notice" style="display: none;">
+        <span>Offline / Local Preview Mode (MayaDB sync activates when deployed online)</span>
+      </div>
+
+      <div class="messages-container" id="messagesList">
+        <div class="welcome-card">
+          <h3>Welcome to <span class="accent-text">Maya Code</span>! 🚀</h3>
+          <p>Join the conversation with developers and creators. Share snippets, ask code questions, and build together.</p>
+        </div>
+        <div class="loading-spinner" id="loadingSpinner">Loading messages...</div>
+      </div>
+    </main>
+
+    <!-- Chat Input Area -->
+    <footer class="chat-footer">
+      <form id="chatForm" class="input-form">
+        <input type="text" id="messageInput" placeholder="Type a message or snippet..." autocomplete="off" maxlength="500" required>
+        <button type="submit" id="sendBtn" class="send-btn" aria-label="Send Message">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </footer>
+  </div>
+
+  <!-- User Profile Modal -->
+  <div id="userModal" class="modal-overlay">
+    <div class="modal-card">
+      <h2>Set Your Handle</h2>
+      <p>Choose a username to display when posting messages on Maya Code.</p>
+      <form id="userForm">
+        <input type="text" id="usernameInput" placeholder="e.g. dev_riya, alex_code" maxlength="20" required>
+        <button type="submit" class="primary-btn">Save Handle</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
